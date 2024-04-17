@@ -1,0 +1,11 @@
+{%  extends "portal/base.html" %}
+ {% block content %}
+ <p> Hi {{customer.name}},<br>
+    {% if customer.plan %}
+        Your Plan {{customer.plan}} has been renewed.
+    {% endif %}
+    {%  if msg %}
+        {{msg}}
+    {% endif %}
+    </p>
+{% endblock %}

@@ -1,0 +1,29 @@
+{%  extends "portal/base.html" %}
+{% block content %}
+
+{% if customers %}
+<h2>Customer List</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Customer Name</th>
+      <th>Plan Name</th>
+      <th>Change Plan</th>
+      <th>Renew Plan</th>
+    </tr>
+  </thead>
+    
+    {% for customer in customers %}
+    <tr>
+      <td>{{customer.name}}</td>
+      <td>{{customer.plan}}</td>
+      <td><a href="{% url 'change_plan' customer.id %}" class="btn btn-info" role="button">Change Plan</a></td>
+      <td><a href="{% url 'renew_plan' customer.id %}" class="btn btn-info" role="button">Renew Plan</a></td>
+    </tr>
+    {%  endfor %}
+  </table>
+{% else %}
+    <p>No Customers are available.</p>
+{% endif %}
+
+{% endblock %}
